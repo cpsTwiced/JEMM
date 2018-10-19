@@ -8,6 +8,10 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.scene.text.Text;
+import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import java.io.File;
+import javafx.event.ActionEvent;
 
 public class Main_Stage extends Application {
 
@@ -104,21 +108,34 @@ public class Main_Stage extends Application {
       	//add text for shifted file
       	Text shiftedText = new Text(10, 210, "Shifted Data");
       	Button browseB1 = new Button ("Browse");
-      	browseB1.setLayoutX(300);
+      	browseB1.setLayoutX(180);
       	browseB1.setLayoutY(50);
+        /*FileChooser filechooser = new FileChooser();
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+          actionStatus.setText("File selected: " + selectedFile.getName());
+        }
+        else {
+          actionStatus.setText("File selection cancelled.");
+        }*/
+        //browseB1.setOnAction(this::browseButtonPressed);
       	Button browseB2 = new Button ("Browse");
-      	browseB2.setLayoutX(300);
+      	browseB2.setLayoutX(180);
       	browseB2.setLayoutY(220);
+        //browseB2.setonAction(this::browseButtonPressed);
       	//add text for file path1
       	Text pathText1 = new Text(10, 70, "file path of original data");
+        TextField path1 = new TextField();
+        path1.setLayoutX(7);
+        path1.setLayoutY(50);
       	//add text for file path2
       	Text pathText2 = new Text(10, 240, "file path of shifted data");
+        TextField path2 = new TextField();
+        path2.setLayoutX(7);
+        path2.setLayoutY(220);
 
+        pane1.getChildren().addAll(path1, path2);
         pane1.getChildren().addAll(browseB1, browseB2, originalText, shiftedText, pathText1, pathText2);
-        /*load_block.getChildren().addAll(hbox1);
-        load_block.getChildren().addAll(browseB1, browseB2);
-      	load_block.getChildren().add(shiftedText);
-      	load_block.getChildren().add(pathText1, pathText2);*/
         load_block.getChildren().add(pane1);
 
 
@@ -148,6 +165,10 @@ public class Main_Stage extends Application {
         main_stage.show();
 
     }
+
+    /*public void browseButtonPressed(ActionEvent event) {
+      Pane
+    }*/
 
 
 
