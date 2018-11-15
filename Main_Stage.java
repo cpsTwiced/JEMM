@@ -3,15 +3,20 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.chart.*;
 import javafx.scene.paint.*;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class Main_Stage extends Application {
 
     //Main VBox containing the entire scene.
-    VBox main_box;
+    FlowPane main_box;
     //HBox's that contain the division of scenes.
     HBox data_raw_box, displacement_visual_box, features;
     //Sub boxes for the raw pane.
@@ -31,7 +36,7 @@ public class Main_Stage extends Application {
     @Override
     public void start(Stage main_stage) {
 
-        main_box = new VBox();
+        main_box = new FlowPane();
         data_raw_box = new HBox();
         features = new HBox();
         load_block = new StackPane();
@@ -70,7 +75,6 @@ public class Main_Stage extends Application {
         //Applying values to the displacement_visual_box.
         displacement_visual_box.setBackground(displacement_visual_box_bg);
         displacement_visual_box.setMinSize(1500, 450);
-        displacement_visual_box.setMaxSize(1500, 450);
         displacement_visual_box.setAlignment(Pos.CENTER);
 
         //Setting feature box data.
@@ -122,7 +126,16 @@ public class Main_Stage extends Application {
 
     }
 
+    public LineChart rawDataGraph(File rawDataFile) {
 
+        Scanner sc = new Scanner(rawDataFile);
+        sc.useDelimiter(",|\\s");
+
+        double[][] rawData = new double[6000][8];
+
+        XYChart.Series[] rawSeries = new XYChart.Series[8];
+
+    }
 
 
     public static void main(String[] args) {
@@ -130,5 +143,7 @@ public class Main_Stage extends Application {
         launch(args);
 
     }
+
+
 
 }
